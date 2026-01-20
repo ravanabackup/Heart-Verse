@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Love gallery | webkaizen</title>
+
+<!-- subscribe my webkaizen channel -->
+<!-- Also follow my channel on instagram -->
+<style>
+    body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        background: url('img/background.jpg');
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+    }
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(white 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1 {
+        color: #fff;
+        font-size: clamp(1.5em, 4vw, 2.5em);
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+    .gallery {
+        width: 60vmin;
+        height: 60vmin;
+        position: relative;
+        animation: rotate 20s linear infinite;
+    }
+    .heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3em;
+        animation: spin 5s linear infinite;
+        z-index: 20;
+    }
+    .gallery:hover {
+        animation-play-state: paused;
+    }
+    .gallery img {
+        position: absolute;
+        width: 10vmin;
+        height: 10vmin;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.8);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        top: 50%;
+        left: 50%;
+        transform-origin: 0 0;
+        margin: -5vmin 0 0 -5vmin;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+        transform: scale(1.2);
+        z-index: 10;
+    }
+    .gallery img:nth-child(2) { transform: rotate(0deg) translateX(20vmin) rotate(0deg); }
+    .gallery img:nth-child(3) { transform: rotate(36deg) translateX(20vmin) rotate(-36deg); }
+    .gallery img:nth-child(4) { transform: rotate(72deg) translateX(20vmin) rotate(-72deg); }
+    .gallery img:nth-child(5) { transform: rotate(108deg) translateX(20vmin) rotate(-108deg); }
+    .gallery img:nth-child(6) { transform: rotate(144deg) translateX(20vmin) rotate(-144deg); }
+    .gallery img:nth-child(7) { transform: rotate(180deg) translateX(20vmin) rotate(-180deg); }
+    .gallery img:nth-child(8) { transform: rotate(216deg) translateX(20vmin) rotate(-216deg); }
+    .gallery img:nth-child(9) { transform: rotate(252deg) translateX(20vmin) rotate(-252deg); }
+    .gallery img:nth-child(10) { transform: rotate(288deg) translateX(20vmin) rotate(-288deg); }
+    .gallery img:nth-child(11) { transform: rotate(324deg) translateX(20vmin) rotate(-324deg); }
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    @keyframes spin {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal img {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    h1 {
+        font-size: clamp(1em, 3vw, 2em);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>🎉 Happy Birthday My Love ❤️</h1>
+    <div class="gallery" id="gallery">
+        <div class="heart">❤️</div>
+        <img src="img/1.jpg" alt="Photo 1">
+        <img src="img/2.jpg" alt="Photo 2">
+        <img src="img/3.jpg" alt="Photo 3">
+        <img src="img/4.jpg" alt="Photo 4">
+        <img src="img/5.jpg" alt="Photo 5">
+        <img src="img/6.jpg" alt="Photo 6">
+        <img src="img/7.jpeg" alt="Photo 7">
+        <img src="img/8.jpg" alt="Photo 8">
+        <img src="img/9.jpg" alt="Photo 9">
+        <img src="img/10.jpg" alt="Photo 10">
+    </div>
+</div>
+<div class="modal" id="modal">
+    <img id="modal-img" src="" alt="">
+</div>
+<script>
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    gallery.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+            modalImg.src = e.target.src;
+            modal.style.display = 'flex';
+        }
+    });
+
+    modal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+</script>
+</body>
+</html>
